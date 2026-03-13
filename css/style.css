@@ -1,0 +1,294 @@
+/* ============================================================
+   CUSTOMPLAN GIC - BRANDING & DESIGN SYSTEM
+   Colors: Navy (#003366), Gold (#BF8B00), White (#FFFFFF)
+   ============================================================ */
+
+:root {
+    --navy: #003366;
+    --gold: #BF8B00;
+    --gold-hover: #D49D00;
+    --white: #FFFFFF;
+    --gray-bg: #F9FAFB;
+    --gray-text: #4B5563;
+    --black: #111827;
+    --border: #E5E7EB;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-body: 'Inter', sans-serif;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--navy);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* --- Navigation --- */
+nav {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo span {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--navy);
+}
+
+/* --- Hero --- */
+.hero {
+    padding: 5rem 0;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--gray-bg), var(--white));
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: var(--gray-text);
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero .cta-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background-color: var(--gold);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 14px 0 rgba(191,139,0,0.39);
+}
+
+.hero .cta-btn:hover {
+    background-color: var(--gold-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(191,139,0,0.23);
+}
+
+/* --- Rates Section --- */
+.rates-section {
+    padding: 4rem 0;
+}
+
+.rates-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.rates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.rate-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rate-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.rate-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--gray-text);
+}
+
+.rate-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 1rem;
+}
+
+.rate-value span {
+    font-size: 1.25rem;
+    vertical-align: super;
+}
+
+.rate-card .btn-small {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.rate-card .btn-small:hover {
+    background-color: var(--gold);
+    color: var(--white);
+}
+
+/* --- Lead Form --- */
+.lead-section {
+    padding: 5rem 0;
+    background-color: var(--navy);
+    color: var(--white);
+}
+
+.lead-section h2 {
+    color: var(--white);
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.lead-section p {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.lead-form {
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: var(--radius);
+    color: var(--black);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--gray-text);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--gold);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: var(--gold-hover);
+}
+
+/* --- FAQ --- */
+.faq-section {
+    padding: 5rem 0;
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.faq-item {
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.5rem;
+}
+
+.faq-item h3 {
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+}
+
+.faq-item p {
+    color: var(--gray-text);
+}
+
+/* --- Footer --- */
+footer {
+    padding: 4rem 0;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    background-color: var(--gray-bg);
+}
+
+.footer-logo {
+    margin-bottom: 1rem;
+}
+
+.footer-copy {
+    color: var(--gray-text);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
