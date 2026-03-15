@@ -5,27 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customplan Financial GIC | Canada's Best GIC Rates</title>
     <meta name="description" content="Customplan Financial GIC — a licensed GICDirect deposit broker providing access to Canada's best available GIC rates. CDIC and provincially insured. No fees.">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-<!-- ===================================================
-     TOP COMPLIANCE BANNER
-=================================================== -->
-<div class="compliance-banner">
-    <div class="container">
-        Customplan Financial GIC is a division of Customplan Financial Advisory Services and is a licensed deposit broker through GICDirect (Monarch Wealth GIC Services Inc.). GIC rates are subject to change without notice. Deposit insurance limits apply. This website is for informational purposes only and does not constitute investment advice. Please read all disclosures below before investing.
-    </div>
-</div>
 
 <!-- ===================================================
      NAVIGATION
@@ -33,9 +18,6 @@
 <nav id="main-nav">
     <div class="container nav-content">
         <div class="logo-lockup">
-            <div class="logo-mark">
-                <span class="logo-cp">CP</span>
-            </div>
             <div class="logo-text">
                 <span class="logo-line1">Customplan Financial</span>
                 <span class="logo-line2">GIC &mdash; Deposit Brokers</span>
@@ -43,10 +25,10 @@
         </div>
         <ul class="nav-links" id="nav-links">
             <li><a href="#rates" class="nav-link">GIC Rates</a></li>
-            <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
             <li><a href="#deposit-insurance" class="nav-link">Deposit Insurance</a></li>
             <li><a href="#faq" class="nav-link">FAQ</a></li>
-            <li><a href="#contact" class="nav-link nav-cta">Request a Rate</a></li>
+            <!-- Nav CTA goes to BOTTOM contact form -->
+            <li><a href="#contact-bottom" class="nav-link nav-cta">Request a Rate</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Open menu">
             <span></span><span></span><span></span>
@@ -55,26 +37,46 @@
 </nav>
 
 <!-- ===================================================
-     HERO
+     HERO — city photo slideshow
 =================================================== -->
 <header class="hero">
-    <div class="hero-image-wrap">
-        <img src="images/financial_district.png" alt="Canadian financial district" class="hero-bg-img">
-        <div class="hero-overlay"></div>
+    <div class="hero-slideshow" id="hero-slideshow">
+        <div class="hero-slide active" style="background-image:url('images/vancouver.png')">
+            <span class="slide-caption">Vancouver, BC</span>
+        </div>
+        <div class="hero-slide" style="background-image:url('images/toronto.png')">
+            <span class="slide-caption">Toronto, ON</span>
+        </div>
+        <div class="hero-slide" style="background-image:url('images/calgary.png')">
+            <span class="slide-caption">Calgary, AB</span>
+        </div>
+        <div class="hero-slide" style="background-image:url('images/financial_district.png')">
+            <span class="slide-caption">Halifax, NS</span>
+        </div>
     </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-dots" id="hero-dots">
+        <button class="hero-dot active" data-slide="0" aria-label="Vancouver"></button>
+        <button class="hero-dot" data-slide="1" aria-label="Toronto"></button>
+        <button class="hero-dot" data-slide="2" aria-label="Calgary"></button>
+        <button class="hero-dot" data-slide="3" aria-label="Halifax"></button>
+    </div>
+
     <div class="container hero-content">
         <div class="hero-text">
             <p class="hero-eyebrow">Licensed Deposit Broker &mdash; GICDirect Network</p>
             <h1>Access Canada's Best<br>Available GIC Rates</h1>
-            <p class="hero-sub">We shop rates across more than 40 Canadian financial institutions so you don't have to. No fees. No complexity. Just the best rate available for your situation.</p>
-            <a href="#contact" class="btn-primary">Request Your Best Rate</a>
+            <p class="hero-sub">We search rates across more than 40 Canadian financial institutions so you don't have to. No fees. No complexity.</p>
+            <!-- Hero CTA → BOTTOM contact form -->
+            <a href="#contact-bottom" class="btn-primary">Request Your Best Rate</a>
         </div>
         <div class="hero-rate-box" id="hero-rate-box">
             <p class="rate-box-label">Current Best Available Rate</p>
             <div class="rate-box-figure"><span id="hero-best-rate">—</span><span class="rate-pct">%</span></div>
             <p class="rate-box-term" id="hero-best-term">Loading rates&hellip;</p>
             <p class="rate-box-note">Rates subject to change. Contact us to confirm.</p>
-            <a href="#rates" class="btn-secondary-sm">View All Rates</a>
+            <!-- Rate box CTA → BOTTOM contact form -->
+            <a href="#contact-bottom" class="btn-secondary-sm">Request This Rate</a>
         </div>
     </div>
 </header>
@@ -87,7 +89,7 @@
         <div class="section-header">
             <p class="eyebrow">Updated Daily</p>
             <h2>Today's Available GIC Rates</h2>
-            <p class="section-sub">Rates shown are the highest available through our network as of <span id="rates-date">today</span>. All rates are subject to change and availability. Minimum investment amounts may apply. Contact us to confirm the current rate for your specific situation.</p>
+            <p class="section-sub">Rates shown are the highest available through our network as of <span id="rates-date">today</span>. All rates are subject to change and availability. Contact us to confirm the current rate for your specific situation.</p>
         </div>
 
         <div class="province-row">
@@ -114,35 +116,16 @@
                     <p class="rates-panel-sub">Highest available rate per term across all partner institutions</p>
                 </div>
             </div>
-            <div class="best-rates-row" id="nonreg-rates">
-                <!-- JS filled -->
-            </div>
+            <!-- Cards: "Request This Rate" → contact-inline (just below rates) -->
+            <div class="best-rates-row" id="nonreg-rates"></div>
         </div>
 
-        <!-- Rate Charts -->
-        <div class="charts-row">
-            <div class="chart-panel">
-                <h3 class="chart-panel-title">Rate Comparison by Account Type</h3>
-                <p class="chart-panel-sub">Current rates across account types and terms</p>
-                <div class="chart-area">
-                    <canvas id="ratesBarChart"></canvas>
-                </div>
-            </div>
-            <div class="chart-panel">
-                <h3 class="chart-panel-title">Illustrative Growth &mdash; $100,000 Invested</h3>
-                <p class="chart-panel-sub">For illustrative purposes only. Actual results depend on the rate secured at time of investment.</p>
-                <div class="chart-area">
-                    <canvas id="growthLineChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- All Rates Tables -->
+        <!-- Registered Accounts -->
         <div class="rates-panel">
             <div class="rates-panel-head">
                 <div>
-                    <h3 class="rates-panel-title">All Account Types &mdash; Registered Accounts</h3>
-                    <p class="rates-panel-sub">Select an account type to view available rates</p>
+                    <h3 class="rates-panel-title">Registered Accounts</h3>
+                    <p class="rates-panel-sub">TFSA, RRSP, RRIF, and LIF rates by term</p>
                 </div>
             </div>
             <div class="tab-bar" id="reg-rates">
@@ -154,11 +137,12 @@
             <div class="table-wrap" id="registered-table"></div>
         </div>
 
+        <!-- Corporate & Specialty -->
         <div class="rates-panel">
             <div class="rates-panel-head">
                 <div>
                     <h3 class="rates-panel-title">Corporate &amp; Specialty Accounts</h3>
-                    <p class="rates-panel-sub">Select an account type to view available rates</p>
+                    <p class="rates-panel-sub">Corporate, USD, and foreign currency GIC rates</p>
                 </div>
             </div>
             <div class="tab-bar" id="other-rates">
@@ -169,83 +153,91 @@
             <div class="table-wrap" id="corporate-table"></div>
         </div>
 
-        <p class="rates-legal">Rates are provided by Monarch Wealth GIC Services Inc. (GICDirect) and are subject to change at any time without notice. Rates shown do not constitute a commitment or offer to lend or invest. Availability may vary by province and minimum investment amount. Contact us to confirm the current rate prior to any investment decision.</p>
+        <p class="rates-legal">Rates are provided by Monarch Wealth GIC Services Inc. (GICDirect) and are subject to change at any time without notice. Rates shown do not constitute a commitment or offer to invest. Availability may vary by province and minimum investment amount. Contact us to confirm the current rate prior to any investment decision.</p>
     </div>
 </section>
 
 <!-- ===================================================
-     GET BEST RATE CTA (directly under rates)
+     CONTACT — INLINE (directly under rates)
+     "Request This Rate" on rate cards scrolls here
 =================================================== -->
-<section class="section-cta-band">
-    <div class="container cta-band-inner">
-        <div>
-            <h3>Ready to secure your rate?</h3>
-            <p>Speak with a registered deposit broker today.</p>
-        </div>
-        <a href="#contact" class="btn-primary">Request Your Best Rate</a>
-    </div>
-</section>
-
-<!-- ===================================================
-     HOW IT WORKS
-=================================================== -->
-<section class="section section-offwhite" id="how-it-works">
+<section class="section section-offwhite contact-inline" id="contact-inline">
     <div class="container">
-        <div class="section-header">
-            <p class="eyebrow">Simple. Transparent. No Fees.</p>
-            <h2>How It Works</h2>
-            <p class="section-sub">GICdirect was founded in 1999 to provide access to higher investment certificate rates through a simple, safe and secure process. As an authorized partner, Customplan Financial GIC brings this service directly to our clients.</p>
-        </div>
-
-        <!-- Step cards with images -->
-        <div class="how-steps">
-            <div class="how-step">
-                <div class="how-step-img-wrap">
-                    <img src="images/advisor_meeting.png" alt="Meeting with a deposit broker" class="how-step-img">
+        <div class="contact-layout">
+            <div class="contact-info-col">
+                <p class="eyebrow">Speak With a Broker</p>
+                <h2>Get Your Best Available Rate</h2>
+                <p>Complete the form and a registered deposit broker will contact you within one business day with a personalized rate comparison &mdash; at no cost or obligation.</p>
+                <div class="contact-details">
+                    <div class="contact-detail-row">
+                        <span class="contact-detail-label">Phone</span>
+                        <a href="tel:18662530030" class="contact-detail-val">1-866-253-0030</a>
+                    </div>
+                    <div class="contact-detail-row">
+                        <span class="contact-detail-label">Email</span>
+                        <a href="mailto:ianm@customplanfinancial.com" class="contact-detail-val">ianm@customplanfinancial.com</a>
+                    </div>
+                    <div class="contact-detail-row">
+                        <span class="contact-detail-label">Fees</span>
+                        <span class="contact-detail-val">No fees &mdash; all provinces</span>
+                    </div>
                 </div>
-                <div class="how-step-body">
-                    <div class="how-step-num">01</div>
-                    <h3>You Tell Us What You Need</h3>
-                    <p>You contact us with your investment amount, preferred term, account type (TFSA, RRSP, non-registered, corporate, etc.), and any questions. There is no obligation and no pressure.</p>
-                </div>
-            </div>
-
-            <div class="how-step how-step-reverse">
-                <div class="how-step-body">
-                    <div class="how-step-num">02</div>
-                    <h3>We Search the Market for You</h3>
-                    <p>Through GICDirect, we access rates from over 40 CDIC-member banks, trust companies, and provincially-insured credit unions across Canada. We find the best available rate that fits your needs.</p>
-                </div>
-                <div class="how-step-img-wrap">
-                    <img src="images/financial_district.png" alt="Canadian financial institutions" class="how-step-img">
+                <div class="contact-compliance">
+                    <p>Customplan Financial GIC is a division of Customplan Financial Advisory Services. Our representatives are registered deposit brokers operating through GICDirect (Monarch Wealth GIC Services Inc.).</p>
                 </div>
             </div>
-
-            <div class="how-step">
-                <div class="how-step-img-wrap">
-                    <img src="images/signing_document.png" alt="Signing a GIC agreement" class="how-step-img">
+            <div class="contact-form-col">
+                <form id="gic-lead-form-inline" class="lead-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name-inline">Full Name</label>
+                            <input type="text" id="name-inline" name="name" placeholder="Jane Smith" required>
+                        </div>
+                    </div>
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label for="email-inline">Email Address</label>
+                            <input type="email" id="email-inline" name="email" placeholder="jane@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-inline">Phone Number</label>
+                            <input type="tel" id="phone-inline" name="phone" placeholder="(604) 555-0100" required>
+                        </div>
+                    </div>
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label for="amount-inline">Approximate Amount</label>
+                            <select id="amount-inline" name="invest-amount">
+                                <option value="">Select&hellip;</option>
+                                <option>Under $25,000</option>
+                                <option>$25,000 &ndash; $50,000</option>
+                                <option>$50,000 &ndash; $100,000</option>
+                                <option>$100,000 &ndash; $250,000</option>
+                                <option>$250,000 &ndash; $500,000</option>
+                                <option>$500,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="acct-inline">Account Type</label>
+                            <select id="acct-inline" name="account-type">
+                                <option value="">Select&hellip;</option>
+                                <option>Non-Registered (Cash)</option>
+                                <option>TFSA</option>
+                                <option>RRSP</option>
+                                <option>RRIF</option>
+                                <option>LIF</option>
+                                <option>Corporate</option>
+                                <option>Not Sure</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary form-submit">Submit Request</button>
+                    <p class="form-consent">By submitting this form you consent to being contacted by a registered deposit broker from Customplan Financial Advisory Services. Your information will not be shared with third parties.</p>
+                </form>
+                <div id="success-inline" class="success-box" style="display:none;">
+                    <h3>Request Received</h3>
+                    <p>A registered deposit broker will be in touch within one business day. For immediate assistance call <a href="tel:18662530030">1-866-253-0030</a>.</p>
                 </div>
-                <div class="how-step-body">
-                    <div class="how-step-num">03</div>
-                    <h3>You Invest. We Handle the Rest.</h3>
-                    <p>Once you confirm the rate and institution, we handle the paperwork. Your GIC is issued directly in your name at the issuing institution. You hold the investment directly — we simply facilitate the process at no charge to you.</p>
-                    <p class="how-step-note">Our representatives are compensated directly by the issuing financial institution. You receive the full published rate with no deductions or fees of any kind.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Client types -->
-        <div class="client-types">
-            <h3 class="client-types-title">We Work With</h3>
-            <div class="client-types-grid">
-                <div class="client-type-item">Individual Investors</div>
-                <div class="client-type-item">Retirees &amp; RRIF Holders</div>
-                <div class="client-type-item">Corporations &amp; Businesses</div>
-                <div class="client-type-item">Municipalities</div>
-                <div class="client-type-item">Strata Councils &amp; Property Managers</div>
-                <div class="client-type-item">Trusts &amp; Not-for-Profit Organizations</div>
-                <div class="client-type-item">Developers &amp; Fraternal Organizations</div>
-                <div class="client-type-item">Estate Administrators</div>
             </div>
         </div>
     </div>
@@ -259,7 +251,7 @@
         <div class="section-header">
             <p class="eyebrow">Protecting Your Investment</p>
             <h2>How Your Deposits Are Protected</h2>
-            <p class="section-sub">GICs placed through our network are held at the issuing institution in your name. Depending on the institution, your deposit is protected by either federal CDIC coverage or provincial deposit insurance. Understanding the difference matters.</p>
+            <p class="section-sub">GICs placed through our network are held at the issuing institution in your name. Depending on the institution, your deposit is protected by either federal CDIC coverage or provincial deposit insurance.</p>
         </div>
 
         <div class="insurance-grid">
@@ -276,22 +268,17 @@
                 </div>
                 <div class="insurance-body">
                     <p>CDIC is a federal Crown corporation that protects eligible deposits at member institutions. Coverage applies automatically &mdash; you do not need to apply. Member institutions include major banks, trust companies, and loan companies regulated under the <em>Bank Act</em> or <em>Trust and Loan Companies Act</em>.</p>
-
                     <h4>What is Covered</h4>
                     <ul class="insurance-list">
                         <li>Eligible deposits in Canadian dollars with a term of five years or less</li>
                         <li>GICs and term deposits that meet CDIC eligibility criteria</li>
                         <li>Deposits held in trust accounts, jointly, or within registered plans</li>
                     </ul>
-
                     <h4>Coverage Categories (each protected separately)</h4>
                     <div class="coverage-table-wrap">
                         <table class="coverage-table">
                             <thead>
-                                <tr>
-                                    <th>Category</th>
-                                    <th>Coverage Limit</th>
-                                </tr>
+                                <tr><th>Category</th><th>Coverage Limit</th></tr>
                             </thead>
                             <tbody>
                                 <tr><td>Deposits in your own name (non-registered)</td><td>Up to $100,000</td></tr>
@@ -306,9 +293,8 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="insurance-note">
-                        <strong>Important:</strong> Coverage limits apply <em>per category</em>, <em>per member institution</em>. By placing deposits across multiple CDIC member institutions, your effective total coverage can be substantially higher. We can help you structure your investments to maximize protection.
+                        <strong>Important:</strong> Coverage limits apply <em>per category</em>, <em>per member institution</em>. By placing deposits across multiple CDIC member institutions, your effective total coverage can be substantially higher.
                     </div>
                     <p class="insurance-source">Source: <a href="https://www.cdic.ca" target="_blank" rel="noopener">Canada Deposit Insurance Corporation (cdic.ca)</a></p>
                 </div>
@@ -327,16 +313,11 @@
                 </div>
                 <div class="insurance-body">
                     <p>Credit unions and caisses populaires are regulated at the provincial level and are not CDIC members. They are instead covered by their provincial deposit protection scheme. Coverage limits and terms vary by province.</p>
-
                     <h4>Selected Provincial Coverage</h4>
                     <div class="coverage-table-wrap">
                         <table class="coverage-table">
                             <thead>
-                                <tr>
-                                    <th>Province</th>
-                                    <th>Body</th>
-                                    <th>Deposit Coverage</th>
-                                </tr>
+                                <tr><th>Province</th><th>Body</th><th>Deposit Coverage</th></tr>
                             </thead>
                             <tbody>
                                 <tr><td>British Columbia</td><td>CUDIC (BC)</td><td>100% of eligible deposits &mdash; unlimited</td></tr>
@@ -348,97 +329,31 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="insurance-note">
-                        <strong>Note:</strong> Provincial coverage details, limits, and eligible deposit definitions change periodically. Always confirm the current coverage at the time of investment with your deposit broker and the issuing institution. Not all GICs from all provinces are eligible for all categories of coverage.
+                        <strong>Note:</strong> Provincial coverage details, limits, and eligible deposit definitions change periodically. Always confirm the current coverage at the time of investment with your deposit broker and the issuing institution.
                     </div>
                     <p class="insurance-source">Contact us or visit your province's financial regulator for current coverage details specific to your situation.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Stacking note -->
         <div class="stacking-note">
             <h3>Maximizing Your Coverage Through Laddering &amp; Diversification</h3>
-            <p>Because CDIC and provincial coverage applies per institution, clients with larger investment amounts can often achieve substantially higher aggregate protection by spreading deposits across multiple eligible institutions. GIC terms range from 30 days to 5 years and may be fully cashable, partially cashable, or non-redeemable prior to maturity. Our registered deposit brokers can help you design a GIC ladder that balances rate optimization, liquidity needs, and deposit insurance coverage. <a href="#contact">Contact us to discuss your situation.</a></p>
+            <p>Because CDIC and provincial coverage applies per institution, clients with larger investment amounts can often achieve substantially higher aggregate protection by spreading deposits across multiple eligible institutions. GIC terms range from 30 days to 5 years and may be fully cashable, partially cashable, or non-redeemable prior to maturity. Our registered deposit brokers can help you design a GIC ladder that balances rate, liquidity, and deposit insurance coverage. <a href="#contact-bottom">Contact us to discuss your situation.</a></p>
         </div>
     </div>
 </section>
 
 <!-- ===================================================
-     GIC CALCULATOR
+     FAQ — at the very bottom before footer
 =================================================== -->
-<section class="section section-offwhite" id="calculator">
-    <div class="container">
-        <div class="section-header">
-            <p class="eyebrow">Illustrative Tool</p>
-            <h2>GIC Growth Calculator</h2>
-            <p class="section-sub">This calculator is for illustrative purposes only. It uses currently available rates which are subject to change. Results do not constitute an offer or commitment. Contact us to confirm the rate available for your specific investment.</p>
-        </div>
-        <div class="calc-layout">
-            <div class="calc-inputs-panel">
-                <div class="calc-field">
-                    <label for="calc-amount">Investment Amount</label>
-                    <div class="calc-input-group">
-                        <span class="calc-prefix">$</span>
-                        <input type="number" id="calc-amount" value="100000" min="1000" step="1000">
-                    </div>
-                </div>
-                <div class="calc-field">
-                    <label>Term</label>
-                    <div class="term-btn-row">
-                        <button class="term-btn active" data-term="1">1 Year</button>
-                        <button class="term-btn" data-term="2">2 Years</button>
-                        <button class="term-btn" data-term="3">3 Years</button>
-                        <button class="term-btn" data-term="4">4 Years</button>
-                        <button class="term-btn" data-term="5">5 Years</button>
-                    </div>
-                </div>
-                <div class="calc-field">
-                    <label for="calc-type">Account Type</label>
-                    <select id="calc-type">
-                        <option value="NonReg">Non-Registered</option>
-                        <option value="TFSA">TFSA</option>
-                        <option value="RSP">RRSP</option>
-                        <option value="Corp">Corporate</option>
-                        <option value="RIF">RRIF</option>
-                        <option value="LIF">LIF</option>
-                    </select>
-                </div>
-                <div class="calc-results">
-                    <div class="calc-result-row">
-                        <span class="calc-result-label">Rate (Illustrative)</span>
-                        <span class="calc-result-val" id="res-rate">—</span>
-                    </div>
-                    <div class="calc-result-row">
-                        <span class="calc-result-label">Total Interest</span>
-                        <span class="calc-result-val" id="res-interest">—</span>
-                    </div>
-                    <div class="calc-result-row calc-result-highlight">
-                        <span class="calc-result-label">Value at Maturity</span>
-                        <span class="calc-result-val" id="res-total">—</span>
-                    </div>
-                </div>
-                <p class="calc-disclaimer">For illustrative purposes only. Rates subject to change. Not financial advice.</p>
-                <a href="#contact" class="btn-primary calc-cta">Request This Rate</a>
-            </div>
-            <div class="calc-chart-panel">
-                <canvas id="calcGrowthChart"></canvas>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===================================================
-     FAQ
-=================================================== -->
-<section class="section section-white" id="faq">
+<section class="section section-offwhite" id="faq">
     <div class="container">
         <div class="section-header">
             <p class="eyebrow">Common Questions</p>
             <h2>Frequently Asked Questions</h2>
         </div>
-        <div class="faq-list" id="faq-list">
+        <div class="faq-list">
 
             <div class="faq-item">
                 <button class="faq-btn" aria-expanded="false">
@@ -454,7 +369,7 @@
                     <span>What is a Registered Deposit Broker?</span><span class="faq-toggle">+</span>
                 </button>
                 <div class="faq-body">
-                    <p>A Registered Deposit Broker is a licensed professional who intermediates between depositors and financial institutions. Deposit brokers are registered through the Registered Deposit Brokers Association (RDBA) and operate under provincial financial services regulations. We represent the depositor — not the institution — and our role is to find the best available rate for your investment. We are compensated directly by the issuing institution; there is no cost to you.</p>
+                    <p>A Registered Deposit Broker is a licensed professional who intermediates between depositors and financial institutions. Deposit brokers are registered through the Registered Deposit Brokers Association (RDBA) and operate under provincial financial services regulations. We represent the depositor &mdash; not the institution &mdash; and our role is to find the best available rate for your investment. We are compensated directly by the issuing institution; there is no cost to you.</p>
                 </div>
             </div>
 
@@ -517,16 +432,16 @@
 </section>
 
 <!-- ===================================================
-     CONTACT
+     CONTACT — BOTTOM
+     Nav "Request a Rate" and hero CTA scroll here
 =================================================== -->
-<section class="section section-offwhite" id="contact">
+<section class="section section-white" id="contact-bottom">
     <div class="container">
         <div class="contact-layout">
             <div class="contact-info-col">
                 <p class="eyebrow">Speak With a Broker</p>
                 <h2>Request Your Best Available Rate</h2>
                 <p>Complete the form and a registered deposit broker will contact you within one business day to provide a personalized rate comparison at no cost or obligation.</p>
-
                 <div class="contact-details">
                     <div class="contact-detail-row">
                         <span class="contact-detail-label">Phone</span>
@@ -537,38 +452,36 @@
                         <a href="mailto:ianm@customplanfinancial.com" class="contact-detail-val">ianm@customplanfinancial.com</a>
                     </div>
                     <div class="contact-detail-row">
-                        <span class="contact-detail-label">Service</span>
+                        <span class="contact-detail-label">Fees</span>
                         <span class="contact-detail-val">No fees &mdash; all provinces</span>
                     </div>
                 </div>
-
                 <div class="contact-compliance">
                     <p>Customplan Financial GIC is a division of Customplan Financial Advisory Services. Our representatives are registered deposit brokers operating through GICDirect (Monarch Wealth GIC Services Inc.). This service is available to residents of all Canadian provinces and territories.</p>
                 </div>
             </div>
-
             <div class="contact-form-col">
-                <form id="gic-lead-form" class="lead-form">
+                <form id="gic-lead-form-bottom" class="lead-form">
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+                            <label for="name-bottom">Full Name</label>
+                            <input type="text" id="name-bottom" name="name" placeholder="Jane Smith" required>
                         </div>
                     </div>
                     <div class="form-row two-col">
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+                            <label for="email-bottom">Email Address</label>
+                            <input type="email" id="email-bottom" name="email" placeholder="jane@example.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="(604) 555-0100" required>
+                            <label for="phone-bottom">Phone Number</label>
+                            <input type="tel" id="phone-bottom" name="phone" placeholder="(604) 555-0100" required>
                         </div>
                     </div>
                     <div class="form-row two-col">
                         <div class="form-group">
-                            <label for="invest-amount">Approximate Amount</label>
-                            <select id="invest-amount" name="invest-amount">
+                            <label for="amount-bottom">Approximate Amount</label>
+                            <select id="amount-bottom" name="invest-amount">
                                 <option value="">Select&hellip;</option>
                                 <option>Under $25,000</option>
                                 <option>$25,000 &ndash; $50,000</option>
@@ -579,8 +492,8 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="account-type">Account Type</label>
-                            <select id="account-type" name="account-type">
+                            <label for="acct-bottom">Account Type</label>
+                            <select id="acct-bottom" name="account-type">
                                 <option value="">Select&hellip;</option>
                                 <option>Non-Registered (Cash)</option>
                                 <option>TFSA</option>
@@ -592,12 +505,12 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" id="submit-btn" class="btn-primary form-submit">Submit Request</button>
-                    <p class="form-consent">By submitting this form you consent to being contacted by a registered deposit broker from Customplan Financial Advisory Services regarding GIC rates and deposit options. Your information will not be shared with third parties.</p>
+                    <button type="submit" class="btn-primary form-submit">Submit Request</button>
+                    <p class="form-consent">By submitting this form you consent to being contacted by a registered deposit broker from Customplan Financial Advisory Services. Your information will not be shared with third parties.</p>
                 </form>
-                <div id="success-message" class="success-box" style="display:none;">
+                <div id="success-bottom" class="success-box" style="display:none;">
                     <h3>Request Received</h3>
-                    <p>Thank you. A registered deposit broker will be in touch within one business day. If you require immediate assistance, please call us at <a href="tel:18662530030">1-866-253-0030</a>.</p>
+                    <p>A registered deposit broker will be in touch within one business day. For immediate assistance call <a href="tel:18662530030">1-866-253-0030</a>.</p>
                 </div>
             </div>
         </div>
@@ -612,7 +525,6 @@
         <div class="footer-top-grid">
             <div class="footer-brand-col">
                 <div class="footer-logo-lockup">
-                    <div class="footer-logo-mark">CP</div>
                     <div>
                         <div class="footer-logo-name">Customplan Financial GIC</div>
                         <div class="footer-logo-sub">A division of Customplan Financial Advisory Services</div>
@@ -624,19 +536,15 @@
                     <div><strong>Email:</strong> <a href="mailto:ianm@customplanfinancial.com">ianm@customplanfinancial.com</a></div>
                 </div>
             </div>
-
             <div class="footer-nav-col">
                 <h4>Navigate</h4>
                 <ul>
                     <li><a href="#rates">GIC Rates</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
                     <li><a href="#deposit-insurance">Deposit Insurance</a></li>
-                    <li><a href="#calculator">Rate Calculator</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="#contact-bottom">Contact Us</a></li>
                 </ul>
             </div>
-
             <div class="footer-nav-col">
                 <h4>Account Types</h4>
                 <ul>
@@ -649,7 +557,6 @@
                     <li><a href="#rates">USD &amp; Foreign Currency GIC</a></li>
                 </ul>
             </div>
-
             <div class="footer-nav-col">
                 <h4>Resources</h4>
                 <ul>
@@ -673,9 +580,7 @@
     </div>
 </footer>
 
-<!-- ===================================================
-     RDBA REGISTRATION FOOTER
-=================================================== -->
+<!-- RDBA Registration Bar -->
 <div class="rdba-footer">
     <div class="container rdba-footer-inner">
         <div class="rdba-text">
