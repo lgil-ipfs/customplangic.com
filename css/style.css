@@ -5,12 +5,12 @@
    ============================================================ */
 
 :root {
-    --charcoal:    #1C2636;
-    --charcoal-md: #2E3D52;
-    --charcoal-lt: #3D5070;
-    --gold:        #9A7B2F;
-    --gold-hover:  #B8942E;
-    --gold-light:  #F0E6C8;
+    --charcoal:    #0B3C61;
+    --charcoal-md: #0D4975;
+    --charcoal-lt: #125E97;
+    --gold:        #F5B716;
+    --gold-hover:  #D99E0F;
+    --gold-light:  #FEF3D1;
     --white:       #FFFFFF;
     --off-white:   #F4F5F7;
     --warm-bg:     #FAFAFA;
