@@ -942,8 +942,8 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
    RDBA FOOTER BAR
 ═══════════════════════════════════════════════ */
 .rdba-footer {
-    background: var(--off-white);
-    border-top: 2px solid var(--border);
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255,255,255,0.08); /* blend with footer top */
     padding: 1.5rem 0;
 }
 .rdba-footer-inner {
@@ -955,12 +955,12 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
 }
 .rdba-text {
     font-size: 0.82rem;
-    color: var(--text-mid);
+    color: rgba(255,255,255,0.65);
     line-height: 1.65;
     flex: 1;
     min-width: 260px;
 }
-.rdba-text strong { color: var(--charcoal); display: block; margin-bottom: 0.3rem; font-size: 0.88rem; }
+.rdba-text strong { color: var(--white); display: block; margin-bottom: 0.3rem; font-size: 0.88rem; }
 .rdba-logo-wrap { flex-shrink: 0; }
 .rdba-logo {
     max-height: 60px;
