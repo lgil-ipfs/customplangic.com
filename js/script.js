@@ -52,15 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (rateEl) rateEl.textContent = best.rate.toFixed(2);
         if (termEl) termEl.textContent =
             `${best.term}-Year Non-Registered GIC — Subject to change`;
-
-        // Update Calculator Default State
-        window.bestRateForCalc = best.rate;
-        window.bestTermForCalc = parseInt(best.term);
-        const calcRateDisplay = document.getElementById('calc-rate-display');
-        const calcTermDisplay = document.getElementById('calc-term-display');
-        if (calcRateDisplay) calcRateDisplay.textContent = best.rate.toFixed(2) + '%';
-        if (calcTermDisplay) calcTermDisplay.textContent = best.term;
-        updateCalculator();
     }
 
     // ── Date ───────────────────────────────────────────────
@@ -264,54 +255,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Init ────────────────────────────────────────────────
     fetchRates('ON');
-
-    // ── Calculator Logic ────────────────────────────────────
-    const btnCalcHero = document.getElementById('btn-calc-hero');
-    const calcPanel = document.getElementById('calc-panel');
-    const calcClose = document.getElementById('calc-close');
-    const calcAmountInput = document.getElementById('calc-amount');
-
-    if (btnCalcHero) {
-        btnCalcHero.addEventListener('click', (e) => {
-            e.preventDefault();
-            calcPanel.classList.add('open');
-            calcAmountInput.focus();
-        });
-    }
-
-    if (calcClose) {
-        calcClose.addEventListener('click', () => {
-            calcPanel.classList.remove('open');
-        });
-    }
-
-    if (calcAmountInput) {
-        calcAmountInput.addEventListener('input', updateCalculator);
-    }
-
-    // Handle close on requesting the rate from calculator
-    const btnCalcRequest = document.getElementById('btn-calc-request');
-    if (btnCalcRequest) {
-        btnCalcRequest.addEventListener('click', () => {
-             calcPanel.classList.remove('open');
-        });
-    }
-
-    function updateCalculator() {
-        if (!window.bestRateForCalc || !window.bestTermForCalc) return;
-        const amount = parseFloat(calcAmountInput.value) || 0;
-        const rate = window.bestRateForCalc / 100;
-        const years = window.bestTermForCalc;
-
-        // Interest calculation - assume compounded annually which is standard for GICs > 1 yr
-        // or simple if 1 yr. We use compounding.
-        const maturityValue = amount * Math.pow(1 + rate, years);
-        const interestEarned = maturityValue - amount;
-
-        const intEl = document.getElementById('calc-interest');
-        const matEl = document.getElementById('calc-maturity');
-
-        if (intEl) intEl.textContent = '$' + interestEarned.toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        if (matEl) matEl.textContent = '$' + maturityValue.toLocaleString('en-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
 });
