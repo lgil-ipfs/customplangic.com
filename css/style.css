@@ -531,30 +531,24 @@ ul { list-style: none; }
 .tab-btn:hover { border-color: var(--charcoal); color: var(--charcoal); }
 .tab-btn.active { background: var(--charcoal); color: var(--white); border-color: var(--charcoal); }
 
-/* Rates table */
-.table-wrap { overflow-x: auto; padding: 0 0 0.5rem; }
-.rates-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-.rates-table th {
-    padding: 0.8rem 1.5rem;
-    text-align: left;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-light);
-    background: var(--off-white);
-    border-bottom: 1px solid var(--border);
+/* Rates list (replaces table) */
+.table-wrap { padding: 1.5rem; background: var(--warm-bg); }
+.rates-list { display: grid; gap: 1rem; }
+.rate-list-card {
+    display: grid; grid-template-columns: 2fr 3fr auto;
+    align-items: center; background: var(--white);
+    border: 1px solid var(--border); border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem; gap: 1.5rem;
+    box-shadow: var(--shadow-xs); transition: box-shadow var(--transition), border-color var(--transition);
 }
-.rates-table td {
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
-    vertical-align: middle;
-}
-.rates-table tbody tr:last-child td { border-bottom: none; }
-.rates-table tbody tr:hover td { background: var(--warm-bg); }
-.td-term { font-weight: 600; color: var(--charcoal); }
-.td-rate { font-family: var(--font-head); font-size: 1.35rem; color: var(--charcoal); font-weight: 700; }
-.td-projected { font-size: 0.85rem; color: var(--text-mid); }
+.rate-list-card:hover { box-shadow: var(--shadow-sm); border-color: var(--charcoal-lt); }
+.rlc-term { font-size: 0.72rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem; }
+.rlc-rate { font-family: var(--font-head); font-size: 1.8rem; font-weight: 700; color: var(--charcoal); line-height: 1; }
+.rlc-rate sup { font-size: 60%; vertical-align: super; }
+.rlc-proj-label { font-size: 0.72rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35rem; font-weight: 700; }
+.rlc-proj-val { font-size: 1.1rem; font-weight: 700; color: var(--charcoal); }
+.rlc-earn { font-size: 0.85rem; font-weight: 500; color: #445166; margin-left: 0.5rem; }
+.rlc-act { text-align: right; }
 .btn-rate {
     padding: 0.4rem 0.9rem;
     font-size: 0.78rem;
@@ -977,23 +971,21 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
     .hero-sub { margin: 0 auto 2rem; }
     .hero-rate-box { margin-top: 2rem; text-align: center; }
     
-    /* Horizontal scrolling for rate cards on tablet to avoid awkward grid gaps */
+    /* Beautiful decoupled cards for tablet */
     .best-rates-row { 
-        display: flex; 
-        overflow-x: auto; 
-        scroll-snap-type: x mandatory;
-        border-right: 1px solid var(--border);
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 1rem; /* breathing room for scrollbar */
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+        padding: 1.5rem;
+        background: var(--warm-bg);
     }
     .best-rate-card { 
-        flex: 0 0 250px; 
-        scroll-snap-align: start; 
-        border-right: 1px solid var(--border) !important; 
-        border-top: none !important; 
-        border-bottom: none !important;
+        border: 1px solid var(--border) !important;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        background: var(--white);
     }
-    .best-rate-card:last-child { border-right: none !important; }
+    .best-rate-card.top-rate { grid-column: 1 / -1; } /* Take full width for the best rate */
     
     .charts-row { grid-template-columns: 1fr; }
     .how-step { grid-template-columns: 1fr; gap: 2rem; }
@@ -1009,6 +1001,7 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
     .section { padding: 3.5rem 0; }
     .section-header h2 { font-size: 1.9rem; }
     .hero h1 { font-size: 2.2rem; line-height: 1.25; }
+    .hero-content { padding-top: 4.5rem; padding-bottom: 5rem; }
     
     /* Mobile nav */
     .nav-links {
@@ -1032,7 +1025,10 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
     .form-row.two-col { grid-template-columns: 1fr; }
     .footer-top-grid { grid-template-columns: 1fr; }
     .rdba-footer-inner { flex-direction: column; align-items: flex-start; }
-    .hero-content { padding-top: 2rem; padding-bottom: 4rem; }
+    
+    /* Convert rate list cards into fully stacked mobile layout */
+    .rate-list-card { grid-template-columns: 1fr; text-align: center; gap: 1rem; padding: 2rem 1.5rem; }
+    .rlc-act { text-align: center; margin-top: 0.5rem; }
 }
 
 @media (max-width: 480px) {
@@ -1041,17 +1037,9 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
     /* On pure mobile, vertical stacking works best for readability */
     .best-rates-row { 
         display: grid; 
-        grid-template-columns: 1fr; 
-        border-right: none;
-        padding-bottom: 0;
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
     }
-    .best-rate-card { 
-        flex: auto; 
-        width: 100%; 
-        border-right: none !important; 
-        border-bottom: 1px solid var(--border) !important;
-    }
-    .best-rate-card:last-child { border-bottom: none !important; }
     
     .contact-form-col { padding: 1.75rem 1rem; }
     .rate-box-figure { font-size: 3.2rem; }

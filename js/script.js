@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const label  = LABELS[type] || type;
         const sorted = [...data.rates].sort((a, b) => +a.term - +b.term);
 
-        let rows = '';
+        let html = '<div class="rates-list">';
         for (const item of sorted) {
             const info = item[type];
             if (!info) continue;
@@ -115,27 +115,27 @@ document.addEventListener('DOMContentLoaded', () => {
             const term = parseInt(item.term);
             const proj = (100000 * Math.pow(1 + r / 100, term)).toFixed(0);
             const earn = (parseInt(proj) - 100000).toLocaleString('en-CA');
-            rows += `<tr>
-                <td class="td-term">${item.term} Year</td>
-                <td class="td-rate">${r.toFixed(2)}%</td>
-                <td>${label}</td>
-                <td class="td-projected">
-                    $${parseInt(proj).toLocaleString('en-CA')}<br>
-                    <span style="font-size:0.75rem;color:var(--text-light)">+$${earn} interest on $100k</span>
-                </td>
-                <td><button class="btn-rate">Get This Rate</button></td>
-            </tr>`;
+            
+            html += `<div class="rate-list-card">
+                <div class="rlc-main">
+                    <div class="rlc-term">${item.term}-Year ${label}</div>
+                    <div class="rlc-rate">${r.toFixed(2)}<sup>%</sup></div>
+                </div>
+                <div class="rlc-proj">
+                    <div class="rlc-proj-label">Projected on $100k</div>
+                    <div class="rlc-proj-val">$${parseInt(proj).toLocaleString('en-CA')} <span class="rlc-earn">(+$${earn})</span></div>
+                </div>
+                <div class="rlc-act">
+                    <button class="btn-rate">Get This Rate</button>
+                </div>
+            </div>`;
         }
 
-        if (!rows) return `<p style="padding:1.5rem 2rem;color:var(--text-light);font-size:0.9rem">Rates for ${label} are not currently available for the selected province. Please contact us.</p>`;
-
-        return `<table class="rates-table">
-            <thead><tr>
-                <th>Term</th><th>Rate</th><th>Account Type</th>
-                <th>Projected Value (illustrative, $100k)</th><th>Action</th>
-            </tr></thead>
-            <tbody>${rows}</tbody>
-        </table>`;
+        if (html === '<div class="rates-list">') {
+            return `<p style="padding:1.5rem 2rem;color:var(--text-light);font-size:0.9rem">Rates for ${label} are not currently available for the selected province. Please contact us.</p>`;
+        }
+        
+        return html + '</div>';
     }
 
     // ── Rate buttons → scroll to inline contact form ────────
