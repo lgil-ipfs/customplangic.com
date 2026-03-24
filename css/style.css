@@ -429,8 +429,8 @@ ul { list-style: none; }
 .best-rate-card.top-rate .brc-label { color: rgba(255,255,255,0.65); }
 .best-rate-card.top-rate .brc-rate { color: var(--white); }
 .best-rate-card.top-rate .brc-tag { background: var(--gold-light); color: var(--gold); border-color: var(--gold-light); }
-.best-rate-card.top-rate .brc-cta { color: rgba(255,255,255,0.65); border-color: rgba(255,255,255,0.3); }
-.best-rate-card.top-rate .brc-cta:hover { color: var(--white); border-color: var(--white); }
+.best-rate-card.top-rate .brc-cta { background: var(--gold); color: var(--charcoal); border: 1px solid var(--gold); }
+.best-rate-card.top-rate .brc-cta:hover { background: var(--gold-hover); border-color: var(--gold-hover); color: var(--charcoal); }
 
 .top-rate-badge {
     font-size: 0.65rem;
@@ -471,22 +471,23 @@ ul { list-style: none; }
     font-weight: 700;
     padding: 0.2rem 0.6rem;
     border-radius: 2px;
-    border: 1px solid var(--border);
-    color: var(--green);
-    background: var(--green-light);
+    border: 1px solid rgba(11, 60, 97, 0.2);
+    color: var(--charcoal);
+    background: rgba(11, 60, 97, 0.08);
     margin-bottom: 0.9rem;
 }
 .brc-cta {
     display: inline-block;
     font-size: 0.78rem;
     font-weight: 600;
-    color: var(--gold);
-    border: 1px solid var(--gold-light);
-    padding: 0.3rem 0.85rem;
-    border-radius: 2px;
+    color: var(--white);
+    background: var(--charcoal);
+    border: 1px solid var(--charcoal);
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-sm);
     transition: all var(--transition);
 }
-.brc-cta:hover { background: var(--gold-light); color: var(--gold-hover); }
+.brc-cta:hover { background: var(--charcoal-md); border-color: var(--charcoal-md); color: var(--white); }
 
 /* Charts */
 .charts-row {

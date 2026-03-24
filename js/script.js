@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="brc-rate">${rate.toFixed(2)}<sup>%</sup></div>
                 <div class="brc-label">Per annum</div>
                 <div class="brc-tag">Non-Registered GIC</div>
-                <a href="#contact-inline" class="brc-cta">Request This Rate</a>
+                <a href="#contact-inline" class="brc-cta">Get This Rate</a>
             `;
             container.appendChild(card);
         }
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     $${parseInt(proj).toLocaleString('en-CA')}<br>
                     <span style="font-size:0.75rem;color:var(--text-light)">+$${earn} interest on $100k</span>
                 </td>
-                <td><button class="btn-rate">Request Rate</button></td>
+                <td><button class="btn-rate">Get This Rate</button></td>
             </tr>`;
         }
 
