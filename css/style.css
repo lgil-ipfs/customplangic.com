@@ -972,12 +972,29 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
    RESPONSIVE
 ═══════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-    .hero-content { grid-template-columns: 1fr; max-width: 620px; }
-    .hero-rate-box { margin-top: 2rem; }
-    .best-rates-row { grid-template-columns: repeat(3, 1fr); }
-    .best-rate-card:nth-child(3) { border-right: none; }
-    .best-rate-card:nth-child(4) { border-top: 1px solid var(--border); }
-    .best-rate-card:nth-child(5) { border-top: 1px solid var(--border); }
+    .hero-content { grid-template-columns: 1fr; max-width: 620px; text-align: center; margin: 0 auto; }
+    .hero-eyebrow { margin: 0 auto 1rem; display: inline-block; }
+    .hero-sub { margin: 0 auto 2rem; }
+    .hero-rate-box { margin-top: 2rem; text-align: center; }
+    
+    /* Horizontal scrolling for rate cards on tablet to avoid awkward grid gaps */
+    .best-rates-row { 
+        display: flex; 
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory;
+        border-right: 1px solid var(--border);
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 1rem; /* breathing room for scrollbar */
+    }
+    .best-rate-card { 
+        flex: 0 0 250px; 
+        scroll-snap-align: start; 
+        border-right: 1px solid var(--border) !important; 
+        border-top: none !important; 
+        border-bottom: none !important;
+    }
+    .best-rate-card:last-child { border-right: none !important; }
+    
     .charts-row { grid-template-columns: 1fr; }
     .how-step { grid-template-columns: 1fr; gap: 2rem; }
     .how-step-reverse .how-step-img-wrap { order: -1; }
@@ -991,8 +1008,8 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
 @media (max-width: 768px) {
     .section { padding: 3.5rem 0; }
     .section-header h2 { font-size: 1.9rem; }
-    .hero h1 { font-size: 2rem; }
-
+    .hero h1 { font-size: 2.2rem; line-height: 1.25; }
+    
     /* Mobile nav */
     .nav-links {
         display: none;
@@ -1011,22 +1028,31 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
     #main-nav { position: relative; }
     .hamburger { display: flex; }
     .nav-link { width: 100%; }
-
-    .best-rates-row { grid-template-columns: repeat(2, 1fr); }
-    .best-rate-card:nth-child(2) { border-right: none; }
-    .best-rate-card:nth-child(3),
-    .best-rate-card:nth-child(4),
-    .best-rate-card:nth-child(5) { border-top: 1px solid var(--border); }
+    
     .form-row.two-col { grid-template-columns: 1fr; }
     .footer-top-grid { grid-template-columns: 1fr; }
     .rdba-footer-inner { flex-direction: column; align-items: flex-start; }
-    .hero-content { padding-top: 3rem; padding-bottom: 4.5rem; }
+    .hero-content { padding-top: 2rem; padding-bottom: 4rem; }
 }
 
 @media (max-width: 480px) {
-    .container { padding: 0 1rem; }
-    .best-rates-row { grid-template-columns: 1fr; }
-    .best-rate-card { border-right: none !important; border-bottom: 1px solid var(--border); }
-    .best-rate-card:last-child { border-bottom: none; }
-    .contact-form-col { padding: 1.75rem 1.25rem; }
+    .container { padding: 0 1.25rem; }
+    
+    /* On pure mobile, vertical stacking works best for readability */
+    .best-rates-row { 
+        display: grid; 
+        grid-template-columns: 1fr; 
+        border-right: none;
+        padding-bottom: 0;
+    }
+    .best-rate-card { 
+        flex: auto; 
+        width: 100%; 
+        border-right: none !important; 
+        border-bottom: 1px solid var(--border) !important;
+    }
+    .best-rate-card:last-child { border-bottom: none !important; }
+    
+    .contact-form-col { padding: 1.75rem 1rem; }
+    .rate-box-figure { font-size: 3.2rem; }
 }
