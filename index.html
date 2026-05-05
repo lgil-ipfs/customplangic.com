@@ -192,23 +192,26 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name-inline">Full Name</label>
-                            <input type="text" id="name-inline" name="name" placeholder="Jane Smith" required>
+                            <input type="text" id="name-inline" name="name" placeholder="Jane Smith" data-fs-field required>
+                            <span data-fs-error="name" class="field-error"></span>
                         </div>
                     </div>
                     <div class="form-row two-col">
                         <div class="form-group">
                             <label for="email-inline">Email Address</label>
-                            <input type="email" id="email-inline" name="email" placeholder="jane@example.com" required>
+                            <input type="email" id="email-inline" name="email" placeholder="jane@example.com" data-fs-field required>
+                            <span data-fs-error="email" class="field-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="phone-inline">Phone Number</label>
-                            <input type="tel" id="phone-inline" name="phone" placeholder="(604) 555-0100" required>
+                            <input type="tel" id="phone-inline" name="phone" placeholder="(604) 555-0100" data-fs-field required>
+                            <span data-fs-error="phone" class="field-error"></span>
                         </div>
                     </div>
                     <div class="form-row two-col">
                         <div class="form-group">
                             <label for="amount-inline">Approximate Amount</label>
-                            <select id="amount-inline" name="invest-amount">
+                            <select id="amount-inline" name="invest-amount" data-fs-field>
                                 <option value="">Select&hellip;</option>
                                 <option>Under $25,000</option>
                                 <option>$25,000 &ndash; $50,000</option>
@@ -217,10 +220,11 @@
                                 <option>$250,000 &ndash; $500,000</option>
                                 <option>$500,000+</option>
                             </select>
+                            <span data-fs-error="invest-amount" class="field-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="acct-inline">Account Type</label>
-                            <select id="acct-inline" name="account-type">
+                            <select id="acct-inline" name="account-type" data-fs-field>
                                 <option value="">Select&hellip;</option>
                                 <option>Non-Registered (Cash)</option>
                                 <option>TFSA</option>
@@ -230,12 +234,14 @@
                                 <option>Corporate</option>
                                 <option>Not Sure</option>
                             </select>
+                            <span data-fs-error="account-type" class="field-error"></span>
                         </div>
                     </div>
-                    <button type="submit" class="btn-primary form-submit">Submit Request</button>
+                    <button type="submit" class="btn-primary form-submit" data-fs-submit-btn>Submit Request</button>
+                    <div data-fs-error class="form-error"></div>
                     <p class="form-consent">By submitting this form you consent to being contacted by a registered deposit broker from Customplan Financial Advisory Services. Your information will not be shared with third parties.</p>
                 </form>
-                <div id="success-inline" class="success-box" style="display:none;">
+                <div id="success-inline" class="success-box" data-fs-success style="display:none;">
                     <h3>Request Received</h3>
                     <p>A registered deposit broker will be in touch within one business day. For immediate assistance call <a href="tel:18662530030">1-866-253-0030</a>.</p>
                 </div>
@@ -466,23 +472,26 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name-bottom">Full Name</label>
-                            <input type="text" id="name-bottom" name="name" placeholder="Jane Smith" required>
+                            <input type="text" id="name-bottom" name="name" placeholder="Jane Smith" data-fs-field required>
+                            <span data-fs-error="name" class="field-error"></span>
                         </div>
                     </div>
                     <div class="form-row two-col">
                         <div class="form-group">
                             <label for="email-bottom">Email Address</label>
-                            <input type="email" id="email-bottom" name="email" placeholder="jane@example.com" required>
+                            <input type="email" id="email-bottom" name="email" placeholder="jane@example.com" data-fs-field required>
+                            <span data-fs-error="email" class="field-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="phone-bottom">Phone Number</label>
-                            <input type="tel" id="phone-bottom" name="phone" placeholder="(604) 555-0100" required>
+                            <input type="tel" id="phone-bottom" name="phone" placeholder="(604) 555-0100" data-fs-field required>
+                            <span data-fs-error="phone" class="field-error"></span>
                         </div>
                     </div>
                     <div class="form-row two-col">
                         <div class="form-group">
                             <label for="amount-bottom">Approximate Amount</label>
-                            <select id="amount-bottom" name="invest-amount">
+                            <select id="amount-bottom" name="invest-amount" data-fs-field>
                                 <option value="">Select&hellip;</option>
                                 <option>Under $25,000</option>
                                 <option>$25,000 &ndash; $50,000</option>
@@ -491,10 +500,11 @@
                                 <option>$250,000 &ndash; $500,000</option>
                                 <option>$500,000+</option>
                             </select>
+                            <span data-fs-error="invest-amount" class="field-error"></span>
                         </div>
                         <div class="form-group">
                             <label for="acct-bottom">Account Type</label>
-                            <select id="acct-bottom" name="account-type">
+                            <select id="acct-bottom" name="account-type" data-fs-field>
                                 <option value="">Select&hellip;</option>
                                 <option>Non-Registered (Cash)</option>
                                 <option>TFSA</option>
@@ -504,12 +514,14 @@
                                 <option>Corporate</option>
                                 <option>Not Sure</option>
                             </select>
+                            <span data-fs-error="account-type" class="field-error"></span>
                         </div>
                     </div>
-                    <button type="submit" class="btn-primary form-submit">Submit Request</button>
+                    <button type="submit" class="btn-primary form-submit" data-fs-submit-btn>Submit Request</button>
+                    <div data-fs-error class="form-error"></div>
                     <p class="form-consent">By submitting this form you consent to being contacted by a registered deposit broker from Customplan Financial Advisory Services. Your information will not be shared with third parties.</p>
                 </form>
-                <div id="success-bottom" class="success-box" style="display:none;">
+                <div id="success-bottom" class="success-box" data-fs-success style="display:none;">
                     <h3>Request Received</h3>
                     <p>A registered deposit broker will be in touch within one business day. For immediate assistance call <a href="tel:18662530030">1-866-253-0030</a>.</p>
                 </div>
@@ -594,6 +606,12 @@
     </div>
 </div>
 
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#gic-lead-form-inline', formId: 'xaqvoenz' });
+  formspree('initForm', { formElement: '#gic-lead-form-bottom', formId: 'xaqvoenz' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 <script src="js/script.js"></script>
 </body>
 </html>

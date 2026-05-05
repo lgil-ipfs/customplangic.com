@@ -1044,3 +1044,49 @@ a.contact-detail-val:hover { color: var(--gold-hover); }
     .contact-form-col { padding: 1.75rem 1rem; }
     .rate-box-figure { font-size: 3.2rem; }
 }
+
+/* ═══════════════════════════════════════════════
+   FORMSPREE AJAX INTEGRATION
+   ═══════════════════════════════════════════════ */
+
+/* Field-level error messages */
+.field-error {
+    display: block;
+    font-size: 0.7rem;
+    color: #7A2D2D; /* --red-note */
+    margin-top: 0.25rem;
+    font-weight: 600;
+}
+
+/* General form error container */
+.form-error {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: #F9EAEA; /* --red-light */
+    color: #7A2D2D; /* --red-note */
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    text-align: center;
+    display: none;
+}
+
+.form-error:not(:empty) {
+    display: block;
+}
+
+/* Highlight invalid fields */
+.lead-form input[aria-invalid="true"], 
+.lead-form select[aria-invalid="true"] {
+    border-color: #7A2D2D !important;
+    background-color: #F9EAEA;
+}
+
+/* Hide form on success */
+.lead-form[data-fs-state="success"] {
+    display: none;
+}
+
+/* Ensure success box shows correctly */
+.success-box[data-fs-state="success"] {
+    display: block !important;
+}

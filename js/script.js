@@ -185,19 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ── Lead forms (both inline and bottom) ─────────────────
-    function setupForm(formId, successId) {
-        const form = document.getElementById(formId);
-        if (!form) return;
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            form.style.display = 'none';
-            const successEl = document.getElementById(successId);
-            if (successEl) successEl.style.display = 'block';
-        });
-    }
-    setupForm('gic-lead-form-inline', 'success-inline');
-    setupForm('gic-lead-form-bottom', 'success-bottom');
+    // Form submission is now handled by Formspree AJAX library (configured in index.html)
+    // No manual setup needed here.
 
     // ── Nav active state on scroll ──────────────────────────
     const nav = document.getElementById('main-nav');
